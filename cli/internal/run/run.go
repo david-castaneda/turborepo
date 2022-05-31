@@ -178,7 +178,7 @@ func (c *RunCommand) Run(args []string) int {
 		defer func() { _ = turbodClient.Close() }()
 		c.Config.Logger.Debug("running in daemon mode")
 		daemonClient := daemonclient.New(c.Ctx, turbodClient)
-		runOptions.runcacheOpts.OutputWatcher = daemonClient
+		opts.runcacheOpts.OutputWatcher = daemonClient
 	}
 
 	ctx, err := context.New(context.WithGraph(c.Config, opts.cacheOpts.Dir))
